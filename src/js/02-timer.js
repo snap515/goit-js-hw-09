@@ -26,8 +26,6 @@ const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 const start = document.querySelector('[data-start]');
 
-const fieldEl = document.querySelectorAll('.field');
-
 start.addEventListener('click', timerLauncher);
 
 const flatpickrTimer = flatpickr('#datetime-picker', options);
@@ -40,10 +38,7 @@ function timerCalc() {
   hoursEl.innerHTML = hours;
   minutesEl.innerHTML = minutes;
   secondsEl.innerHTML = seconds;
-
-  fieldEl.style.transform = 'scale(1.2)';
 }
-console.log(secondsEl.style);
 
 function timerLauncher() {
   setInterval(timerCalc, 1000);
