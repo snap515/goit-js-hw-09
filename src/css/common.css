@@ -16,3 +16,39 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #3498bd;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #2980b9;
+  transform: scale(1.1)
+}
+
+.timer {
+  margin-top: 10px;
+}
+
+.field {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: white;
+  background-color: #3498bd;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.field:hover {
+  transform: scale(1.05);
+}
