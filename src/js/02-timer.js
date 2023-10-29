@@ -7,6 +7,7 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
+
   onClose(selectedDates) {
     const timerTime = selectedDates[0] - Date.now();
     if (timerTime <= 0) {
