@@ -12,7 +12,6 @@ const options = {
     const timerTime = selectedDates[0] - Date.now();
     if (timerTime <= 0) {
       Notify.failure('Please choose a date in the future');
-      // alert('Please choose a date in the future');
     } else {
       Notify.success('Timer has been calculated. Press start to RUN the timer');
       start.removeAttribute('disabled');
