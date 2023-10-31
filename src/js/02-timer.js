@@ -8,10 +8,11 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
 
-  onClose(selectedDates) {
-    const timerTime = selectedDates[0] - Date.now();
+  onClose({ selectedDate }) {
+    const timerTime = selectedDate - Date.now();
     if (timerTime <= 0) {
       Notify.failure('Please choose a date in the future');
+      start.setAttribute('disabled', '');
     } else {
       Notify.success('Timer has been calculated. Press start to RUN the timer');
       start.removeAttribute('disabled');
@@ -26,22 +27,28 @@ const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 const start = document.querySelector('[data-start]');
 
+let intervalId;
+
 start.addEventListener('click', timerLauncher);
 
 const flatpickrTimer = flatpickr('#datetime-picker', options);
 
 function timerCalc() {
+  if (flatpickrTimer.selectedDates[0] - Date.now() < 0) {
+    clearInterval(intervalId);
+    return;
+  }
   const { days, hours, minutes, seconds } = convertMs(
     flatpickrTimer.selectedDates[0] - Date.now()
   );
-  daysEl.innerHTML = days;
-  hoursEl.innerHTML = hours;
-  minutesEl.innerHTML = minutes;
-  secondsEl.innerHTML = seconds;
+  daysEl.textContent = days;
+  hoursEl.textContent = hours;
+  minutesEl.textContent = minutes;
+  secondsEl.textContent = seconds;
 }
 
 function timerLauncher() {
-  setInterval(timerCalc, 1000);
+  intervalId = setInterval(timerCalc, 1000);
 }
 
 function addLeadingZero(value) {
