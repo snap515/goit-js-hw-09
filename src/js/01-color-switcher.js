@@ -15,18 +15,18 @@ let timerId = null;
 startBtn.addEventListener('click', onStartBtnPress);
 stopBtn.addEventListener('click', onStopBtnPress);
 
-function btnDisableToggle(startBtn, stopBtn) {
+function toggleDisabledState(startBtn, stopBtn) {
   startBtn.setAttribute('disabled', '');
   stopBtn.removeAttribute('disabled');
 }
 
 function onStartBtnPress() {
-  btnToggle(startBtn, stopBtn);
+  toggleDisabledState(startBtn, stopBtn);
   onColorChange();
   timerId = setInterval(onColorChange, 1000);
 }
 
 function onStopBtnPress() {
-  btnDisableToggle(stopBtn, startBtn);
+  toggleDisabledState(stopBtn, startBtn);
   clearInterval(timerId);
 }
